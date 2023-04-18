@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
-MyPluginModule::Engine.routes.draw do
-  get "/examples" => "examples#index"
+CustomPage::Engine.routes.draw do
+  get "page" => "page#index"
   # define routes here
 end
 
-Discourse::Application.routes.draw { mount ::MyPluginModule::Engine, at: "my-plugin" }
+Discourse::Application.routes.append do{ 
+  mount ::CustomPage::Engine, at: "pages" }
